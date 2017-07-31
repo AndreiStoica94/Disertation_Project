@@ -1,0 +1,23 @@
+# attach large motors to port B and C, medium motor to port A
+motor_left = LargeMotor ('outB')
+motor_right = LargeMotor ('outC')
+
+def forward():
+  motor_left.run_forever(speed_sp=550)
+  motor_right.run_forever(speed_sp=550)
+ 
+def back():
+  motor_left.run_forever(speed_sp=-550)
+  motor_right.run_forever(speed_sp=-550)
+
+def left():
+  motor_left.run_forever(speed_sp=-550)
+  motor_right.run_forever(speed_sp=550)
+  
+def right():
+  motor_left.run_forever(speed_sp=550)
+  motor_right.run_forever(speed_sp=-550)
+  
+def stop():
+  motor_left.run_forever(speed_sp=0)
+  motor_right.run_forever(speed_sp=0)
