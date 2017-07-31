@@ -1,0 +1,3 @@
+import terminos, tty, sys
+from ev3dev.ev3 import *
+from time import sleep
