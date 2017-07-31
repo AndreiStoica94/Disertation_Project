@@ -1,0 +1,20 @@
+'This code is realise in Small Basic
+'connect an EV3 ultrasonic sensor to port 4
+GraphicsWindow.WIDTH=400
+GraphicsWindow.HEIGHT=400
+GraphicsWindow.DrawLine(200,0,200,400)
+GraphicsWindow.DrawLine(0,200,400,200)
+Sensor.SetMode(4,0) 'set port 4 to mode 0, distance in mm
+
+While "True"
+  x = (GraphicsWindow.MouseX-200)/2
+  y = (200-GraphicsWindow.Mousey)/2
+  b_speed = (x+y)/2 'calculate speed for motor B
+  c_speed = (y+x)/2 'calculate speed for motor C
+  Motor.StartSync ("BC", b_speed, c_speed)
+  Program.Delay(100) 'This is not vital. is it helpful
+  LCD.StopUpdate() 'to prevent flickering, don't update LCD until text is ready
+  LCD.Clear()
+  LCD.Text(1,45,55,2,Sensor.ReadRawValue(4,0)/10+"cm") 'covenrt mm to cm
+  LCD.Update()
+EndWhile
