@@ -1,0 +1,27 @@
+while True:
+  k = getch()
+  print(k)
+  if k == 'w':
+    forward()
+  if k == 's':
+    back()
+  if k == 'a':
+    left()
+  if k == 'd':
+    right()
+  if k == 'f':
+    medium_motor.run_timed(time_sp=6300, speed_sp=50)
+  if k == ' ':
+    stop()
+    print(ir.value())
+    sleep(1)
+    back()
+    while ir.value() < startdistance:  # 7 IR units = 5cm approx
+      sleep(0.01)
+    print (ir.value())
+    motor_left.stop()
+    motor_right.stop()
+  if k == 'p':
+    stop()
+  if k == 'q':
+    exit()
